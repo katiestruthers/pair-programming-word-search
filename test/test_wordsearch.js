@@ -15,22 +15,47 @@ describe("#wordSearch()", function() {
     ['O', 'D', 'C', 'A', 'K', 'U', 'A', 'S'],
     ['E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L']];
 
+  // CORE TESTING //
+
+  it("should return false if empty array", function() {
+    const result = wordSearch([], '');
+    assert.isFalse(result);
+  });
+  
   it("should return false if the word is not present", function() {
     const result = wordSearch(matrix, 'FRANK');
     assert.isFalse(result);
   });
 
-  it("should return true if the word is present (horizontal)", function() {
+  it("should return true if the word is present (forwards, horizontal)", function() {
     const result = wordSearch(matrix, 'SEINFELD');
     assert.isTrue(result);
   });
 
-  it("should return true if the word is present (vertical)", function() {
+  it("should return true if the word is present (forwards, vertical)", function() {
     const result = wordSearch(matrix, 'ASYHWBUOE');
     assert.isTrue(result);
   });
-  it("should return false if empty array", function() {
-    const result = wordSearch([], '');
-    assert.isFalse(result);
+
+  // STRETCH TESTING //
+
+  it("should return true if the word is present (backwards, horizontal)", function() {
+    const result = wordSearch(matrix, 'DLEFNIES');
+    assert.isTrue(result);
   });
+
+  it("should return true if the word is present (backwards, vertical)", function() {
+    const result = wordSearch(matrix, 'EOUBWHYSA');
+    assert.isTrue(result);
+  });
+
+  // it("should return true if the word is present (diagonal, bottom-right to top-left)", function() {
+  //   const result = wordSearch(matrix, 'UKWRHH');
+  //   assert.isTrue(result);
+  // });
+
+  // it("should return true if the word is present (diagonal, bottom-left to top-right)", function() {
+  //   const result = wordSearch(matrix, 'FKPYL');
+  //   assert.isTrue(result);
+  // });
 });
